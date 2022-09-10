@@ -1,20 +1,15 @@
 # Encryptor
 import string
+import random
 
-import keygen
+set = string.ascii_letters + string.digits + string.punctuation + " "
 
-# Import key
-text_file = open("key.txt", "r")
-key = text_file.read()
-text_file.close()
+key = ''.join(random.sample(set,len(set)))
 
 # Import Message
-message_file = open("message.txt", "r")
+message_file = open("Encryption/message.txt", "r")
 message = message_file.read()
 message_file.close()
- 
- # ASCii reference set
-set = string.ascii_letters + string.digits + string.punctuation + " "
 
 codex = []
 
@@ -45,6 +40,6 @@ for c in codex:
     encrypt_output.append(encrypt_val)
 
 # write files to text document
-secure_file = open("encrypted_message.txt", "w")
-encrpt_string = secure_file.write(''.join(encrypt_output))
+secure_file = open("Encryption/encrypted_message.txt", "w")
+encrpt_string = secure_file.write(key + " ##::: " +''.join(encrypt_output))
 secure_file.close()

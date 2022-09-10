@@ -1,15 +1,15 @@
-# Encryptor
+# Decryptor Script
 import string
 
-# Import key
-text_file = open("key.txt", "r")
-key = text_file.read()
-text_file.close()
-
 # Import Message
-encrpt_message_file = open("encrypted_message.txt", "r")
-encrypt_message = encrpt_message_file.read()
+encrpt_message_file = open("Encryption/encrypted_message.txt", "r")
+import_message = encrpt_message_file.read()
 encrpt_message_file.close()
+
+message_split = import_message.split(" ##::: ", 1)
+
+key = message_split[0]
+encrypt_message = message_split[1]
  
  # ASCii reference set
 set = string.ascii_letters + string.digits + string.punctuation + " "
@@ -43,6 +43,6 @@ for c in codex:
     plain_output.append(ref_val)
 
 # write files to text document
-secure_file = open("decrypted_message.txt", "w")
+secure_file = open("Encryption/decrypted_message.txt", "w")
 encrpt_string = secure_file.write(''.join(plain_output))
 secure_file.close()
